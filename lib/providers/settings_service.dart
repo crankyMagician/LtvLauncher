@@ -64,6 +64,7 @@ const String _showWeatherInStatusBarKey = "show_weather_in_status_bar";
 const String _showWeatherWarningsKey = "show_weather_warnings";
 const String _temperatureUnitKey = "temperature_unit";
 const String _autoAddNewAppsKey = "auto_add_new_apps";
+const String _wallpaperFeedUrlKey = "wallpaper_feed_url";
 
 const String TEMPERATURE_UNIT_CELSIUS = "celsius";
 const String TEMPERATURE_UNIT_FAHRENHEIT = "fahrenheit";
@@ -122,6 +123,7 @@ class SettingsService extends ChangeNotifier {
   late String _screensaverClockStyle;
   late String _screensaverAnimationStyle;
   late bool _timeBasedWallpaperEnabled;
+  late String _wallpaperFeedUrl;
   late bool _showInputsWidgetInStatusBar;
   late bool _showContinueWatching;
   late String _continueWatchingCardSize;
@@ -246,6 +248,7 @@ class SettingsService extends ChangeNotifier {
     _screensaverClockStyle = _sharedPreferences.getString(_screensaverClockStyleKey) ?? "minimal";
     _screensaverAnimationStyle = _sharedPreferences.getString(_screensaverAnimationStyleKey) ?? SCREENSAVER_ANIMATION_BOUNCE;
     _timeBasedWallpaperEnabled = _sharedPreferences.getBool(_timeBasedWallpaperEnabledKey) ?? false;
+    _wallpaperFeedUrl = _sharedPreferences.getString(_wallpaperFeedUrlKey) ?? "";
     _showInputsWidgetInStatusBar = _sharedPreferences.getBool(_showInputsWidgetInStatusBarKey) ?? true;
     _showContinueWatching = _sharedPreferences.getBool(_showContinueWatchingKey) ?? false;
     _continueWatchingCardSize = _sharedPreferences.getString(_continueWatchingCardSizeKey) ?? "normal";
@@ -293,6 +296,7 @@ class SettingsService extends ChangeNotifier {
       _screensaverClockStyleKey: _screensaverClockStyle,
       _screensaverAnimationStyleKey: _screensaverAnimationStyle,
       _timeBasedWallpaperEnabledKey: _timeBasedWallpaperEnabled,
+      _wallpaperFeedUrlKey: _wallpaperFeedUrl,
       _showInputsWidgetInStatusBarKey: _showInputsWidgetInStatusBar,
       _showContinueWatchingKey: _showContinueWatching,
       _continueWatchingCardSizeKey: _continueWatchingCardSize,
@@ -464,6 +468,14 @@ class SettingsService extends ChangeNotifier {
   }
 
   bool get timeBasedWallpaperEnabled => _timeBasedWallpaperEnabled;
+
+  String get wallpaperFeedUrl => _wallpaperFeedUrl;
+
+  Future<void> setWallpaperFeedUrl(String value) async {
+    await _sharedPreferences.setString(_wallpaperFeedUrlKey, value);
+    _wallpaperFeedUrl = value;
+    notifyListeners();
+  }
 
   Future<void> setTimeBasedWallpaperEnabled(bool enabled) async {
     await _sharedPreferences.setBool(_timeBasedWallpaperEnabledKey, enabled);
