@@ -18,6 +18,7 @@
 
 import 'package:flauncher/providers/settings_service.dart';
 import 'package:flauncher/providers/wallpaper_service.dart';
+import 'package:flauncher/widgets/settings/art_feed_panel_page.dart';
 import 'package:flauncher/widgets/settings/focusable_settings_tile.dart';
 import 'package:flauncher/widgets/settings/gradient_panel_page.dart';
 import 'package:flutter/material.dart';
@@ -78,6 +79,11 @@ class WallpaperPanelPage extends StatelessWidget {
                       leading: Icon(Icons.insert_drive_file_outlined),
                       title: Text(localizations.picture, style: Theme.of(context).textTheme.bodyMedium),
                       onPressed: () => _pickWallpaper(context, (s) => s.pickWallpaper(), localizations),
+                    ),
+                    FocusableSettingsTile(
+                      leading: Icon(Icons.palette_outlined),
+                      title: Text("Art feed", style: Theme.of(context).textTheme.bodyMedium),
+                      onPressed: () => Navigator.of(context).pushNamed(ArtFeedPanelPage.routeName),
                     ),
                   ],
                 );

@@ -19,6 +19,7 @@
 import 'package:flauncher/widgets/side_panel_dialog.dart';
 import 'package:flauncher/widgets/settings/applications_panel_page.dart';
 import 'package:flauncher/widgets/settings/launcher_sections_panel_page.dart';
+import 'package:flauncher/widgets/settings/art_feed_panel_page.dart';
 import 'package:flauncher/widgets/settings/gradient_panel_page.dart';
 import 'package:flauncher/widgets/settings/launcher_section_panel_page.dart';
 import 'package:flauncher/widgets/settings/settings_panel_page.dart';
@@ -105,6 +106,8 @@ class _SettingsPanelState extends State<SettingsPanel> {
                       return _FastPageRoute(builder: (_) => StatusBarPanelPage());
                     case GradientPanelPage.routeName:
                       return _FastPageRoute(builder: (_) => GradientPanelPage());
+                    case ArtFeedPanelPage.routeName:
+                      return _FastPageRoute(builder: (_) => ArtFeedPanelPage());
                     case ApplicationsPanelPage.routeName:
                       return _FastPageRoute(builder: (_) => ApplicationsPanelPage());
                     case LauncherSectionsPanelPage.routeName:
